@@ -1,38 +1,43 @@
-# Welcome to Remix!
+# "BeerAdvisor" Remix Sample application
 
-- [Remix Docs](https://remix.run/docs)
+This repository contains an example fullstack React application with Remix 2. It uses both a database and an external REST service as datasources.
 
-## Development
+![Screenshot BeerAdvisor](./screenshot-beeradvisor.png)
 
-From your terminal:
+# Start:
 
-```sh
-npm run dev
+Run the following commands from the root directory:
+
+### 1. Start the database
+* use docker-compose to start the database. (Note that port `1360` must be available)
+```bash
+docker-compose up -d
+```
+* if you want to connect to the running database either use docker or connect with your fav db tool
+  (for connection data see docker-compose file here)
+### 2. Populate the database
+
+* on first run only: setup the database content
+```bash
+pnpm db:reset
 ```
 
-This starts your app in development mode, rebuilding assets on file changes.
+### 3. Shop API
+* Start "Shop API" service by running `pnpm shop-backend`
 
-## Deployment
+### 3. Start Remix application
 
-First, build your app for production:
-
-```sh
-npm run build
+* Install dependencies:
+```bash 
+pnpm install
 ```
 
-Then run the app in production mode:
+* Start the application in dev mode:
 
-```sh
-npm start
+```bash 
+pnpm dev
 ```
 
-Now you'll need to pick a host to deploy it to.
+### Feedback
 
-### DIY
-
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
+If you have questions, comments or other feedback, feel free to raise an issue in this repository. You can also contact me on [Twitter](twitter.com/nilshartmann), [Mastodon](https://norden.social/@nilshartmann) or [my homepage](https://nilshartmann.net).

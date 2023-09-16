@@ -1,0 +1,20 @@
+version: "3.4"
+
+name: "beeradvisor-remix"
+
+services:
+  beer_db:
+    image: postgres:15.3-alpine
+    command:
+      - postgres
+      - -c
+      - log_statement=all
+    container_name: beeradvisor_remix_beer_db
+    ports:
+      - "1361:5432"
+    environment:
+      - POSTGRES_USER=klaus
+      - POSTGRES_PASSWORD=stoertebeker
+      - POSTGRES_DB=beer_db
+    volumes:
+      - ./docker/db-data:/var/lib/postgresql/data

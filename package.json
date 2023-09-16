@@ -4,26 +4,40 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
+    "shop-backend": "cd shop-backend && pnpm install && pnpm start",
     "build": "remix build",
     "dev": "remix dev --manual",
     "start": "remix-serve ./build/index.js",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "db:start": "docker-compose up -d",
+    "db:generate-client": "prisma generate",
+    "db:reset": "prisma db push --force-reset && prisma db seed"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
+    "@prisma/client": "^5.3.1",
     "@remix-run/css-bundle": "^2.0.0",
     "@remix-run/node": "^2.0.0",
     "@remix-run/react": "^2.0.0",
     "@remix-run/serve": "^2.0.0",
     "isbot": "^3.6.8",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@remix-run/dev": "^2.0.0",
     "@remix-run/eslint-config": "^2.0.0",
+    "@types/node": "^20.6.2",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
+    "@types/uuid": "^9.0.4",
     "eslint": "^8.38.0",
+    "prettier": "^3.0.3",
+    "prisma": "^5.3.1",
+    "tsx": "^3.12.10",
     "typescript": "^5.1.6"
   },
   "engines": {
